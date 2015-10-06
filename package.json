@@ -13,12 +13,15 @@
     "babelify": "^6.3.0",
     "browserify": "^11.2.0",
     "standard": "^5.3.1",
+    "uglify-js": "^2.4.24",
     "watchify": "^3.4.0"
   },
   "scripts": {
-    "build": "mkdir -p gh-pages/ && npm run build-js && cp static/* gh-pages/",
-    "build-js": "browserify index.js --transform babelify -o gh-pages/the.js",
-    "watch-js": "watchify index.js --transform babelify -o gh-pages/the.js",
+    "build": "mkdir -p dist/ && npm run build-js && cp static/* dist/",
+    "build-js": "browserify index.js --transform babelify -o dist/the.js",
+    "watch-js": "watchify index.js --transform babelify -o dist/the.js",
+    "gh": "mkdir -p gh-pages/ && cp dist/* gh-pages && npm run gh-js",
+    "gh-js": "uglifyjs --compress --mangle -- dist/the.js > gh-pages/the.js",
     "test": "standard"
   },
   "author": {
