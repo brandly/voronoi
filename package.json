@@ -1,0 +1,29 @@
+{
+  "name": "voronoi",
+  "version": "1.0.0",
+  "description": "click to add dots in voronoi diagram",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "d3": "^3.5.6",
+    "pleasejs": "^0.4.2",
+    "viewport-size": "0.0.1"
+  },
+  "devDependencies": {
+    "babelify": "^6.3.0",
+    "browserify": "^11.2.0",
+    "standard": "^5.3.1",
+    "watchify": "^3.4.0"
+  },
+  "scripts": {
+    "build": "mkdir -p gh-pages/ && npm run build-js && cp static/* gh-pages/",
+    "build-js": "browserify index.js --transform babelify -o gh-pages/the.js",
+    "watch-js": "watchify index.js --transform babelify -o gh-pages/the.js",
+    "test": "standard"
+  },
+  "author": {
+    "name": "Matthew Brandly",
+    "email": "brandly13@gmail.com"
+  },
+  "license": "MIT"
+}
